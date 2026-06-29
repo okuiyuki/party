@@ -8,4 +8,8 @@ export default defineConfig({
     react(),
     babel({ presets: [reactCompilerPreset()] })
   ],
+  base: '/party/',
+  build: {
+    outDir: 'docs'
+  }
 })
