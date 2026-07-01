@@ -1,121 +1,84 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { Heart, History, Settings, Sparkles, Wine } from 'lucide-react'
+import backgroundImage from './assets/background.png'
+
+const glassButtonClass =
+  'rounded-2xl border border-white/30 bg-white/50 shadow-[0_4px_20px_rgba(184,142,125,0.15)] backdrop-blur-sm transition-transform active:scale-[0.98]'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const handleStop = () => console.log('STOP')
+  const handleHistory = () => console.log('HISTORY')
+  const handleSettings = () => console.log('SETTINGS')
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div
+      className="mx-auto flex min-h-dvh w-full max-w-md flex-col bg-cover bg-center bg-no-repeat px-6 py-10"
+      style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
+      <header className="flex justify-center pt-2">
+        <div className="relative flex items-end gap-1 text-rose-gold">
+          <Sparkles className="absolute -left-4 -top-1 size-3 opacity-70" strokeWidth={1.5} />
+          <Sparkles className="absolute -right-4 top-0 size-2 opacity-60" strokeWidth={1.5} />
+          <Heart className="absolute -top-3 left-1/2 size-3 -translate-x-1/2" strokeWidth={1.5} />
+          <Wine className="size-5 -rotate-12" strokeWidth={1.5} />
+          <Wine className="size-5 rotate-12 scale-x-[-1]" strokeWidth={1.5} />
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
+      </header>
+
+      <main className="flex flex-1 flex-col items-center justify-center text-center">
+        <p className="font-serif text-[120px] leading-none text-rose-gold">30</p>
+        <p className="mt-2 font-sans text-sm uppercase tracking-[0.25em] text-rose-gold/80">
+          Second Challenge
+        </p>
+
+        <div className="mt-6 flex w-full max-w-[200px] items-center gap-3">
+          <div className="h-px flex-1 bg-rose-gold/40" />
+          <Heart className="size-3 text-rose-gold" strokeWidth={1.5} fill="none" />
+          <div className="h-px flex-1 bg-rose-gold/40" />
         </div>
+
+        <p className="mt-6 font-serif text-base leading-relaxed text-text-dark">
+          Try to stop
+          <br />
+          at exactly 30.00.
+        </p>
+      </main>
+
+      <section className="flex flex-col items-center gap-3">
         <button
           type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
+          onClick={handleStop}
+          className={`w-full ${glassButtonClass} px-8 py-5`}
         >
-          Count is {count}
+          <span className="font-sans text-lg uppercase tracking-[0.3em] text-text-dark">
+            Stop
+          </span>
         </button>
+        <p className="text-xs text-text-dark/60">※ Start with MC signal</p>
       </section>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      <footer className="mt-8 grid grid-cols-2 gap-4">
+        <button
+          type="button"
+          onClick={handleHistory}
+          className={`${glassButtonClass} flex items-center justify-center gap-2 px-4 py-4`}
+        >
+          <History className="size-4 text-rose-gold" strokeWidth={1.5} />
+          <span className="font-sans text-xs uppercase tracking-widest text-rose-gold">
+            History
+          </span>
+        </button>
+        <button
+          type="button"
+          onClick={handleSettings}
+          className={`${glassButtonClass} flex items-center justify-center gap-2 px-4 py-4`}
+        >
+          <Settings className="size-4 text-rose-gold" strokeWidth={1.5} />
+          <span className="font-sans text-xs uppercase tracking-widest text-rose-gold">
+            Settings
+          </span>
+        </button>
+      </footer>
+    </div>
   )
 }
 
