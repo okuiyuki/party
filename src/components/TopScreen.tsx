@@ -11,8 +11,8 @@ type TopScreenProps = {
 function TopScreen({ onStart, onSettings, onHistory, targetDate: _targetDate }: TopScreenProps) {
 
   return (
-    <>
-      <header className="flex justify-center pt-2">
+    <div className="flex min-h-0 flex-1 flex-col">
+      <header className="flex shrink-0 justify-center pt-2">
         <div className="relative flex items-end gap-1 text-rose-gold">
           <Sparkles className="absolute -left-4 -top-1 size-3 opacity-70" strokeWidth={1.5} />
           <Sparkles className="absolute -right-4 top-0 size-2 opacity-60" strokeWidth={1.5} />
@@ -22,7 +22,7 @@ function TopScreen({ onStart, onSettings, onHistory, targetDate: _targetDate }: 
         </div>
       </header>
 
-      <main className="flex flex-1 flex-col items-center justify-start pt-16 text-center">
+      <main className="flex min-h-0 flex-1 flex-col items-center justify-start overflow-y-auto pt-16 text-center">
         <p className="font-serif text-[120px] leading-none text-rose-gold">30</p>
         <p className="mt-2 font-sans text-sm uppercase tracking-[0.25em] text-rose-gold/80">
           Second Challenge
@@ -41,7 +41,7 @@ function TopScreen({ onStart, onSettings, onHistory, targetDate: _targetDate }: 
         </p>
       </main>
 
-      <section className="flex flex-col items-center gap-3">
+      <section className="flex shrink-0 flex-col items-center gap-3">
         <button
           type="button"
           onClick={onStart}
@@ -54,7 +54,7 @@ function TopScreen({ onStart, onSettings, onHistory, targetDate: _targetDate }: 
         <p className="text-xs text-text-dark/60">※ Start with MC signal</p>
       </section>
 
-      <footer className="mt-8 grid grid-cols-2 gap-4">
+      <footer className="mt-8 shrink-0 grid grid-cols-2 gap-4">
         <button
           type="button"
           onClick={onHistory}
@@ -76,7 +76,7 @@ function TopScreen({ onStart, onSettings, onHistory, targetDate: _targetDate }: 
           </span>
         </button>
       </footer>
-    </>
+    </div>
   )
 }
 
